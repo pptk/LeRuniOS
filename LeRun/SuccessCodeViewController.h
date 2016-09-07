@@ -10,4 +10,12 @@
 
 @interface SuccessCodeViewController : UIViewController
 
+@property(nonatomic,copy)UIImage *codeImage;
+@property(nonatomic,copy)NSString *tipText;
+@property(nonatomic,copy)NSString *fromStr;
+
+@property (strong, nonatomic) IBOutlet UILabel *tipLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *codeImageView;
+@property (strong, nonatomic) IBOutlet UILabel *countDownTime;
+
 @end

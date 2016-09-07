@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HistoryDetailViewController : UIViewController
+@interface HistoryDetailViewController : BaseViewController
+
+@property(nonatomic,copy)NSString *leRunID;
+@property (strong, nonatomic) IBOutlet UITableView *historyTableView;
+@property (strong, nonatomic) IBOutlet UITextField *inputTextView;//回复输入框
 
 @end

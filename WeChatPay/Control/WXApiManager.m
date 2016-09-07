@@ -22,10 +22,10 @@
 
 - (void)dealloc {
     self.delegate = nil;
-    [super dealloc];
+//    [super dealloc];
 }
 
-#pragma mark - WXApiDelegate
+#pragma mark - WXApiDelegate 支付结果回调
 - (void)onResp:(BaseResp *)resp {
     if ([resp isKindOfClass:[SendMessageToWXResp class]]) {
         if (_delegate
@@ -62,7 +62,7 @@
         }
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
-        [alert release];
+//        [alert release];
     }
 
 }

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TrackViewController : UIViewController
+@interface TrackViewController : BaseViewController
+@property (strong, nonatomic) IBOutlet UIImageView *trackImageView;
 
 @end

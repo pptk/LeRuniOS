@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SuccessCodeViewController">
             <connections>
+                <outlet property="codeImageView" destination="TFX-VU-0Km" id="qWH-wv-WBC"/>
+                <outlet property="countDownTime" destination="tbS-lg-5Mu" id="KsA-Jh-cv0"/>
+                <outlet property="tipLabel" destination="FBY-gg-Zg4" id="XoL-J6-zG2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +19,89 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TFX-VU-0Km">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="TFX-VU-0Km" secondAttribute="height" multiplier="1:1" id="naS-fZ-LQg"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="naS-fZ-LQg"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="naS-fZ-LQg"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="审核通过和即可生效" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBY-gg-Zg4">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbS-lg-5Mu">
+                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="TFX-VU-0Km" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="1mg-71-5ew"/>
+                <constraint firstItem="TFX-VU-0Km" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="8lQ-Fj-JdX"/>
+                <constraint firstItem="tbS-lg-5Mu" firstAttribute="top" secondItem="FBY-gg-Zg4" secondAttribute="bottom" constant="8" id="Nv7-vW-7MM"/>
+                <constraint firstItem="TFX-VU-0Km" firstAttribute="top" secondItem="FBY-gg-Zg4" secondAttribute="bottom" constant="44.5" id="Rjf-6w-Ohq">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstItem="FBY-gg-Zg4" firstAttribute="leading" secondItem="TFX-VU-0Km" secondAttribute="leading" id="Ufq-Q6-Rdl"/>
+                <constraint firstItem="FBY-gg-Zg4" firstAttribute="top" secondItem="TFX-VU-0Km" secondAttribute="bottom" constant="7.5" id="X2F-mc-Ie6"/>
+                <constraint firstItem="TFX-VU-0Km" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="4:5" id="XGj-9Y-e1X"/>
+                <constraint firstItem="tbS-lg-5Mu" firstAttribute="trailing" secondItem="FBY-gg-Zg4" secondAttribute="trailing" id="jP2-mE-6as"/>
+                <constraint firstItem="FBY-gg-Zg4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oA3-qH-6A7"/>
+                <constraint firstItem="tbS-lg-5Mu" firstAttribute="leading" secondItem="FBY-gg-Zg4" secondAttribute="leading" id="x8k-wZ-VVg"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="TFX-VU-0Km"/>
+                    <exclude reference="FBY-gg-Zg4"/>
+                    <exclude reference="tbS-lg-5Mu"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="1mg-71-5ew"/>
+                    <exclude reference="8lQ-Fj-JdX"/>
+                    <exclude reference="Rjf-6w-Ohq"/>
+                    <exclude reference="XGj-9Y-e1X"/>
+                    <exclude reference="Ufq-Q6-Rdl"/>
+                    <exclude reference="X2F-mc-Ie6"/>
+                    <exclude reference="oA3-qH-6A7"/>
+                    <exclude reference="Nv7-vW-7MM"/>
+                    <exclude reference="jP2-mE-6as"/>
+                    <exclude reference="x8k-wZ-VVg"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="TFX-VU-0Km"/>
+                    <include reference="FBY-gg-Zg4"/>
+                    <include reference="tbS-lg-5Mu"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="1mg-71-5ew"/>
+                    <include reference="8lQ-Fj-JdX"/>
+                    <exclude reference="Rjf-6w-Ohq"/>
+                    <include reference="XGj-9Y-e1X"/>
+                    <include reference="Ufq-Q6-Rdl"/>
+                    <include reference="X2F-mc-Ie6"/>
+                    <include reference="oA3-qH-6A7"/>
+                    <include reference="Nv7-vW-7MM"/>
+                    <include reference="jP2-mE-6as"/>
+                    <include reference="x8k-wZ-VVg"/>
+                </mask>
+            </variation>
         </view>
     </objects>
 </document>

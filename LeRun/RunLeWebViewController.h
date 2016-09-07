@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RunLeWebViewController : UIViewController
+@interface RunLeWebViewController : BaseViewController
 
+@property(nonatomic,copy)NSString *urlStr;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property(nonatomic,copy)NSString *title;
 @end

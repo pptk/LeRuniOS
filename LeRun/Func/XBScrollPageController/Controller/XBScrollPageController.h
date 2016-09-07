@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XBScrollPageController : UIViewController
+@interface XBScrollPageController : BaseViewController
 
 @property (nonatomic,strong) UIFont *normalTitleFont; /**< 正常(非选中)标签字体  default is 13*/
 @property (nonatomic,strong) UIFont *selectedTitleFont; /**< 选中状态标签字体  default is 18*/
@@ -48,4 +48,6 @@
  */
 - (instancetype)initWithTitles:(NSArray *)titleArray andSubViewdisplayClassNames:(NSArray *)classNames andTagViewHeight:(CGFloat)tagViewHeight;
 
+-(void)change;
+-(void)scrollEnd;
 @end

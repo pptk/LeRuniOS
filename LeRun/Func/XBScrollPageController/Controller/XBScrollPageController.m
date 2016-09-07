@@ -40,6 +40,9 @@
 @end
 
 @implementation XBScrollPageController
+{
+    int k;
+}
 #pragma - mark LazyLoad
 - (NSMutableArray *)tagTitleModelArray
 {
@@ -122,6 +125,7 @@
 {
     if (!_selectionIndicator) {
         _selectionIndicator = [[UIView alloc]init];
+        NSLog(@"-----%@",self.selectedTitleColor);
         _selectionIndicator.backgroundColor = self.selectedTitleColor;
         [self.tagCollectionView addSubview:_selectionIndicator];
     }
@@ -146,22 +150,16 @@
 - (instancetype)initWithTitles:(NSArray *)titleArray andSubViewdisplayClassNames:(NSArray *)classNames andTagViewHeight:(CGFloat)tagViewHeight
 {
     if (self = [super init]) {
-        
 #warning 因为之后的代码会使用这两个方法设置的数据,所以顺序必须在前面执行
         //设置默认值
         [self setupDefaultProperties];
-        
         //将titleArray转换成模型Array
         [self convertKeyValue2Model:titleArray];
-        
         //初始化两个CollectionView
         [self setupCollectionView];
-        
         self.tagViewHeight = tagViewHeight;
- 
         self.tagViewHeight = tagViewHeight;
         self.displayClassNames = classNames;
-        
         }
     return self;
 }
@@ -173,7 +171,7 @@
     self.normalTitleFont = [UIFont systemFontOfSize:13];
     self.selectedTitleFont = [UIFont systemFontOfSize:18];
     self.normalTitleColor = [UIColor darkGrayColor];
-    self.selectedTitleColor = [UIColor redColor];
+    self.selectedTitleColor = RGB(0x5a, 0xc8, 0x94);
     self.tagViewSectionInset = UIEdgeInsetsZero;
     self.tagItemSectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
     self.tagItemSize = CGSizeZero;
@@ -187,7 +185,7 @@
     tagFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     tagFlowLayout.minimumLineSpacing = 0;
     tagFlowLayout.minimumInteritemSpacing = 0;
-    tagFlowLayout.sectionInset = self.tagViewSectionInset;
+//    tagFlowLayout.sectionInset = self.tagViewSectionInset;
     self.tagFlowLayout = tagFlowLayout;
     
     
@@ -198,6 +196,7 @@
     tagCollectionView.showsHorizontalScrollIndicator = NO;
     tagCollectionView.dataSource = self;
     tagCollectionView.delegate = self;
+    tagCollectionView.pagingEnabled = YES;
     self.tagCollectionView = tagCollectionView;
     [self.view addSubview:self.tagCollectionView];
     
@@ -226,18 +225,17 @@
 #pragma - mark LifeCycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-
-
+    self.automaticallyAdjustsScrollViewInsets = NO;//不让系统调整，我们自己调整，所以我写了偏移 64dp
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.edgesForExtendedLayout = UIRectEdgeBottom;
 }
 
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
     
-    self.tagCollectionView.frame = CGRectMake(0, 0, XBScreenWidth, self.tagViewHeight);
-    self.pageCollectionView.frame = CGRectMake(0, self.tagViewHeight, XBScreenWidth, self.view.frame.size.height - self.tagViewHeight);
-    
+    self.tagCollectionView.frame = CGRectMake(0, 64, XBScreenWidth, self.tagViewHeight);
+    self.pageCollectionView.frame = CGRectMake(0, self.tagViewHeight+64, XBScreenWidth, self.view.frame.size.height - self.tagViewHeight);
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     self.selectedIndex = indexPath;
     [self.view layoutIfNeeded];
@@ -256,7 +254,12 @@
         [self collectionView:self.tagCollectionView didSelectItemAtIndexPath:self.selectedIndex];
     }
 }
-
+-(void)change{
+    if (self.tagTitleModelArray.count != 0) {
+        self.selectedIndex = [NSIndexPath indexPathForItem:0 inSection:0];
+        [self collectionView:self.tagCollectionView didSelectItemAtIndexPath:self.selectedIndex];
+    }
+}
 
 #pragma mark - UICollectionViewDataSource Protocol Methods
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -266,29 +269,23 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
 //    NSAssert(self.tagTitleModelArray.count != self.displayClassNames.count, @"标题与控制器数量不一致!");
-    
     return self.tagTitleModelArray?self.tagTitleModelArray.count:0;
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    
     NSInteger index = indexPath.item;
     if ([self isTagView:collectionView]) {     //标签
-        
         XBTagTitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kTagCollectionViewCellIdentifier forIndexPath:indexPath];
         
         if (iOS7x) {
             [self collectionView:collectionView willDisplayCell:cell forItemAtIndexPath:indexPath];
         }
-        
         [self saveCachedFrame:cell.frame ByIndexPath:indexPath];
         
         XBTagTitleModel *tagTitleModel = self.tagTitleModelArray[index];
         cell.tagTitleModel = tagTitleModel;
-        cell.backgroundColor = self.backgroundColor;
+        cell.backgroundColor = [UIColor whiteColor];
         return cell;
     }else{                                              //页面
         XBPageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kPageCollectionViewCellIdentifier forIndexPath:indexPath];
@@ -310,14 +307,12 @@
     NSInteger index = indexPath.item;
     if ([self isTagView:collectionView]) {     //标签
         if (CGSizeEqualToSize(CGSizeZero, self.tagItemSize)) {      //如果用户没有手动设置tagItemSize
-            
             CGRect cellFrameCache;
             //先取缓存,没有才计算
             cellFrameCache = [self getCachedFrameByIndexPath:indexPath];
             if (!CGRectEqualToRect(cellFrameCache, CGRectZero)) { //有缓存
                 return cellFrameCache.size;
             }
-            
             XBTagTitleModel *tagTitleModel = self.tagTitleModelArray[index];
             NSString *title = tagTitleModel.tagTitle;
             CGSize titleSize = [self sizeForTitle:title withFont:((tagTitleModel.normalTitleFont.pointSize >= tagTitleModel.selectedTitleFont.pointSize)?tagTitleModel.normalTitleFont:tagTitleModel.selectedTitleFont)];
@@ -451,7 +446,12 @@
         [self collectionView:self.tagCollectionView didSelectItemAtIndexPath:indexPath];
     }
 }
-
+#pragma mark 回滚到之前选中的页面。
+-(void)scrollEnd{
+    int index = self.pageCollectionView.contentOffset.x / self.pageCollectionView.frame.size.width;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self collectionView:self.tagCollectionView didSelectItemAtIndexPath:indexPath];
+}
 
 #pragma mark - Private Methods
 - (CGSize)sizeForTitle:(NSString *)title withFont:(UIFont *)font
@@ -474,7 +474,7 @@
         [self.tagTitleModelArray addObject:tag];
     }
 }
-
+#pragma mark peng
 - (BOOL)isTagView:(UICollectionView *)collectionView
 {
     if (self.tagCollectionView == collectionView) {

@@ -13,7 +13,7 @@
 + (GetMessageFromWXResp *)responseWithText:(NSString *)text
                          OrMediaMessage:(WXMediaMessage *)message
                                   bText:(BOOL)bText {
-    GetMessageFromWXResp *resp = [[[GetMessageFromWXResp alloc] init] autorelease];
+    GetMessageFromWXResp *resp = [[GetMessageFromWXResp alloc] init];
     resp.bText = bText;
     if (bText)
         resp.text = text;

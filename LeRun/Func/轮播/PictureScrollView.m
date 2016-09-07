@@ -71,8 +71,14 @@
     //布置ImageView
     for(NSInteger i = 0;i<_slideImagesArray.count; i++){
         ScrollImageView *sliderImage = [[ScrollImageView alloc]init];
-        sliderImage.contentMode = UIViewContentModeScaleAspectFit;
-        [sliderImage sd_setImageWithURL:[NSURL URLWithString:_slideImagesArray[i]] placeholderImage:[UIImage imageNamed:@"back.png"]];
+        sliderImage.contentMode = UIViewContentModeScaleAspectFill;
+        sliderImage.clipsToBounds = YES;
+        UIImage *image = [UIImage imageNamed:_slideImagesArray[i]];
+        if([FuncPublic isEmpty:image]){
+            [sliderImage sd_setImageWithURL:[NSURL URLWithString:_slideImagesArray[i]] placeholderImage:[UIImage imageNamed:@"home.jpg"]];
+        }else{
+            [sliderImage setImage:image];
+        }
         sliderImage.tag = i+100;
         sliderImage.frame = CGRectMake(_scrollView.frame.size.width*i + _scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
         [sliderImage addTarget:self action:@selector(ImageClick:)];//添加点击事件。这是自定义ImageVIew的时候设置的自带事件
@@ -80,14 +86,27 @@
     }
     //取数组最后一张图放在第0页面
     ScrollImageView *firstSlideImage = [[ScrollImageView alloc]init];
-    firstSlideImage.contentMode = UIViewContentModeScaleAspectFit;
-    [firstSlideImage sd_setImageWithURL:[NSURL URLWithString:_slideImagesArray[_slideImagesArray.count-1]]  placeholderImage:[UIImage imageNamed:@"back.png"]];
+    firstSlideImage.contentMode = UIViewContentModeScaleAspectFill;
+    
+    UIImage *image = [UIImage imageNamed:_slideImagesArray[_slideImagesArray.count-1]];
+    if([FuncPublic isEmpty:image]){
+    [firstSlideImage sd_setImageWithURL:[NSURL URLWithString:_slideImagesArray[_slideImagesArray.count-1]]  placeholderImage:[UIImage imageNamed:@"home.jpg"]];
+    }else{
+        [firstSlideImage setImage:image];
+    }
     firstSlideImage.frame = CGRectMake(0, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
+    firstSlideImage.clipsToBounds = YES;
     [_scrollView addSubview:firstSlideImage];
     //取数组第一张图放在最后1页
     ScrollImageView *endSlideImage = [[ScrollImageView alloc]init];
-    endSlideImage.contentMode = UIViewContentModeScaleAspectFit;
-    [endSlideImage sd_setImageWithURL:[NSURL URLWithString:_slideImagesArray[0]] placeholderImage:[UIImage imageNamed:@"back.png"]];
+    endSlideImage.contentMode = UIViewContentModeScaleAspectFill;
+    UIImage *images = [UIImage imageNamed:_slideImagesArray[0]];
+    if([FuncPublic isEmpty:images]){
+    [endSlideImage sd_setImageWithURL:[NSURL URLWithString:_slideImagesArray[0]] placeholderImage:[UIImage imageNamed:@"home.jpg"]];
+    }else{
+        [endSlideImage setImage:images];
+    }
+    endSlideImage.clipsToBounds = YES;
     endSlideImage.frame = CGRectMake((_slideImagesArray.count +1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
     [_scrollView addSubview:endSlideImage];
     [_scrollView setContentSize:CGSizeMake(_scrollView.frame.size.width *(_slideImagesArray.count+2), _scrollView.frame.size.height)];
@@ -97,10 +116,13 @@
     //如果设置了定时滑动
     if(!self.withoutAutoScroll){
         if(!self.autoTime){
-            self.autoTime = [NSNumber numberWithFloat:2.0f];
+            return;
+//            self.autoTime = [NSNumber numberWithFloat:2.0f];
+        }else{
+            NSTimer *myTimer = [NSTimer timerWithTimeInterval:[self.autoTime floatValue] target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
         }
-        NSTimer *myTimer = [NSTimer timerWithTimeInterval:[self.autoTime floatValue] target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
+        
     }
 }
 

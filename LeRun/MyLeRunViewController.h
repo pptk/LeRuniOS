@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyLeRunViewController : UIViewController
+@interface MyLeRunViewController : BaseViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableViews;
 
 @end

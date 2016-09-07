@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AdvertViewController : UIViewController
+@interface AdvertViewController : BaseViewController
+
+@property(nonatomic,copy)UIImage *image;
 
 @end

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface AboutViewController : BaseViewController
+@property (strong, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (strong, nonatomic) IBOutlet UILabel *versionLabe;
+@property (strong, nonatomic) IBOutlet UIView *updateView;
+@property (strong, nonatomic) IBOutlet UIView *errorBackView;
+@property (strong, nonatomic) IBOutlet UIView *askMe;
 
 @end

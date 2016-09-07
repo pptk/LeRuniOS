@@ -10,4 +10,8 @@
 
 @interface LoveDetailViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *loveTableView;
+
+@property(nonatomic,copy)NSString *showID;
+
 @end

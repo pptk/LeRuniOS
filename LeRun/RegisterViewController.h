@@ -10,4 +10,12 @@
 
 @interface RegisterViewController : UIViewController
 
+@property(nonatomic,copy)NSString *fromStr;
+
+@property (strong, nonatomic) IBOutlet UITextField *telPhoneTextField;
+@property (strong, nonatomic) IBOutlet UITextField *codeTextField;
+@property (strong, nonatomic) IBOutlet UIButton *getCodeBtn;
+@property (strong, nonatomic) IBOutlet UIButton *registBtn;
+@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+
 @end

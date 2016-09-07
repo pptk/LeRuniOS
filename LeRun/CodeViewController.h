@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CodeViewController : UIViewController
+@interface CodeViewController : BaseViewController
+
+@property (strong, nonatomic) IBOutlet UITableView *tableViews;
+@property(nonatomic,copy)NSString *leRunTitle;//标题
+@property(nonatomic,copy)NSString *leRunID;//标题
 
 @end

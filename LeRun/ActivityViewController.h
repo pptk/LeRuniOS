@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityViewController : UIViewController
+@interface ActivityViewController : BaseViewController
+@property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 
 @end

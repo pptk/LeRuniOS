@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ProviderDelegate <NSObject>
+-(void)selectedProvider:(NSString *)provider;//回调方法
+@end
+
 @interface ProviderSelectedViewController : UIViewController
+
+@property(nonatomic,retain)id<ProviderDelegate> delegate;//选择城市回调方法
+@property (strong, nonatomic) IBOutlet UITableView *providerTableView;
 
 @end

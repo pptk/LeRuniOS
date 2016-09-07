@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PapaWViewController : UIViewController
+@interface PapaWViewController : BaseViewController
 
 @end

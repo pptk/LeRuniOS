@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface SendViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextView *inputTextView;
+@property (strong, nonatomic) IBOutlet UIView *selectedBackground;
+@property (strong, nonatomic) IBOutlet UIButton *selectedBtn;
+@property (strong, nonatomic) IBOutlet UILabel *inputSize;
+
+//@property (strong, nonatomic) IBOutlet UIButton *sendBtn;
 
 @end

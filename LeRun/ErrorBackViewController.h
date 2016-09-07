@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ErrorBackViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *errorTextField;
+@property (strong, nonatomic) IBOutlet UITextField *telPhoneTextField;
 
 @end

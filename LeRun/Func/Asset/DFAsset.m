@@ -26,7 +26,7 @@
         [self addSubview:assetImageView];
         //add选中的图片。设置隐藏
         selectedView = [[UIImageView alloc]init];
-        selectedView.image = [UIImage imageNamed:@"selected.png"];
+        selectedView.image = [UIImage imageNamed:@"selected_yes.png"];
         
         selectedView.hidden = YES;
         [self addSubview:selectedView];
@@ -45,7 +45,7 @@
     [super setFrame:frame];
     assetImageView.frame = self.bounds;
 //    selectedView.frame = self.bounds;
-    selectedView.frame = CGRectMake(5, 5, 10, 10);
+    selectedView.frame = CGRectMake(5, 5, 20, 20);
 }
 
 

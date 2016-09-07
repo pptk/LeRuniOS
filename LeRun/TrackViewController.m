@@ -7,7 +7,7 @@
 //
 
 #import "TrackViewController.h"
-
+#import "UIImageView+WebCache.h"
 @interface TrackViewController ()
 
 @end
@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationItem.title = @"足迹";
+//    [FuncPublic hideTabBar:self];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.trackImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",BASE_URL,@"lerunposter/footmark.png"]] placeholderImage:[UIImage imageNamed:@"home.jpg"]];
 }
 
 - (void)didReceiveMemoryWarning {

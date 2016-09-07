@@ -9,6 +9,45 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+//阿里云账号  1040575104@qq.com
+//密码 youknow724
+//密码：Pengxionghui625，Chenyongyin123
+//终端六位密码 404006
+
+
+//URL
+//#define BASE_URL @"http://192.168.2.105:8080/LeRun"//先骕楼IP
+#define BASE_URL @"http://121.43.172.150:8080/LeRun"//服务器
+//#define BASE_URL @"http://192.168.188.245:8080/LeRun"//云中城
+
+#define UPLOAD_IMAGE BASE_URL@"/servlet/UploadServlet"
+#define CHANGE_PERSON_INFOMATION BASE_URL@"/servlet/LeRunServlet"
+
+#define ADIMAGE @"/lerunposter/advertisement_poster.jpg"//启动页广告
+
+#define FIRST_LOGIN @"1"
+#define IS_LOGIN @"IS_LOGIN"
+#define USER_ID @"USER_ID"
+#define USER_PWD @"USER_PWD"
+#define USER_NAME @"USER_NAME"
+#define USER_HEADER @"USER_HEADER"
+#define USER_TEL @"USER_TEL"
+#define USER_PROVINCE @"USER_PROVINCE"
+
+#define SETNULL @"请说点什么哦~"
+#define NO_LOGIN @"还没登录哦~"
+#define SUCCESS @"发送成功~"
+#define HTTP_FAIL @"网络异常~"
+#define CHANGE_FAIL @"修改失败~"
+#define LOADING @"正在上传..."
+#define ISLOADING @"正在加载..."
+
+#define SERVER_INDEX @"index"
+#define FLAG @"flag"
+
+
+#import "FuncPublic.h"
+#import "BaseViewController.h"
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

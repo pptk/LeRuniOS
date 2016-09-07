@@ -60,17 +60,15 @@
 -(void)tapAction:(UITapGestureRecognizer *)tap{
     DFAsset *selectedAsset = (DFAsset *)tap.view;
     if(selectedAsset.selected == NO){//如果不是选中状态
-        NSLog(@"------------is true");
         if(selectedArray.count < 3){
             [selectedAsset toggleSelection];//修改UIImage的selectedImageView状态
             [selectedArray addObject:[selectedAsset asset]];//将asset加入到selectedArray中
         }else{
             //        NSLog(@"最多只能选中x张图片");
 //            [self.view makeToast:[NSString stringWithFormat:@"现在最多只能选择%ld张图片哦",self.ImageCount] duration:0.5 position:CSToastPositionCenter];
-            NSLog(@"最多只能选择三章图片哦。");
+            [WToast showWithText:@"最多只能选择三张图片哦~"];
         }
     }else{
-        NSLog(@"------------is false");
         //当前这个图片对象
         //        [selectedAsset asset];
         ALAsset *removeThis;
@@ -87,7 +85,6 @@
 
 #pragma mark 点击完成按钮
 -(void)doneAction:(id)sender{
-    NSLog(@"YES1");
     [(DFPickerVC *)self.parent selectedAssets:selectedArray];//将选中的数组send给调用页面。
     [self dismissViewControllerAnimated:YES completion:nil];//关闭。
 }

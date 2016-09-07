@@ -10,4 +10,12 @@
 
 @interface SetPwdViewController : UIViewController
 
+@property(nonatomic,copy)NSString *fromStr;
+@property(nonatomic,copy)NSString *telStr;
+
+@property (strong, nonatomic) IBOutlet UILabel *telLabel;
+@property (strong, nonatomic) IBOutlet UITextField *pwdFirstTextField;
+@property (strong, nonatomic) IBOutlet UITextField *pwdSecondTextField;
+@property (strong, nonatomic) IBOutlet UIButton *changePwd;
+
 @end

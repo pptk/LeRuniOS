@@ -10,4 +10,9 @@
 
 @interface ShowLoveModel : NSObject
 
+@property(nonatomic,copy)NSString *userName;
+@property(nonatomic,copy)NSString *userHeader;
+@property(nonatomic,copy)NSString *userID;
+@property(nonatomic,copy)NSString *userTime;
+
 @end

@@ -75,7 +75,7 @@ static char imageURLStorageKey;
             __strong UIButton *sself = wself;
             if (!sself) return;
             if (image) {
-                [sself setImage:image forState:state];
+                [sself setImage:[image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:state];//pengxionghui fix 7/28
             }
             if (completedBlock && finished) {
                 completedBlock(image, error, cacheType, url);

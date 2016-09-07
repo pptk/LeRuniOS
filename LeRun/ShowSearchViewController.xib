@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowSearchViewController">
+            <connections>
+                <outlet property="resultTableView" destination="OEc-WD-7bn" id="50w-j1-KDD"/>
+                <outlet property="searchBar" destination="7uW-ct-B2r" id="vtU-e6-v9c"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7uW-ct-B2r">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-WD-7bn">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="OEc-WD-7bn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6R2-st-Sif"/>
+                <constraint firstItem="OEc-WD-7bn" firstAttribute="top" secondItem="7uW-ct-B2r" secondAttribute="bottom" id="Sp0-Ew-DD7"/>
+                <constraint firstItem="7uW-ct-B2r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WeX-o1-jgh"/>
+                <constraint firstAttribute="trailing" secondItem="7uW-ct-B2r" secondAttribute="trailing" id="Xb4-a0-FdY"/>
+                <constraint firstAttribute="bottom" secondItem="OEc-WD-7bn" secondAttribute="bottom" id="kdp-y8-Hcr"/>
+                <constraint firstItem="7uW-ct-B2r" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pWh-wn-sTr">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="OEc-WD-7bn" secondAttribute="trailing" id="yxR-eP-meU"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="7uW-ct-B2r"/>
+                    <exclude reference="OEc-WD-7bn"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="WeX-o1-jgh"/>
+                    <exclude reference="Xb4-a0-FdY"/>
+                    <exclude reference="pWh-wn-sTr"/>
+                    <exclude reference="6R2-st-Sif"/>
+                    <exclude reference="Sp0-Ew-DD7"/>
+                    <exclude reference="kdp-y8-Hcr"/>
+                    <exclude reference="yxR-eP-meU"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="7uW-ct-B2r"/>
+                    <include reference="OEc-WD-7bn"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="WeX-o1-jgh"/>
+                    <include reference="Xb4-a0-FdY"/>
+                    <include reference="pWh-wn-sTr"/>
+                    <include reference="6R2-st-Sif"/>
+                    <include reference="Sp0-Ew-DD7"/>
+                    <include reference="kdp-y8-Hcr"/>
+                    <include reference="yxR-eP-meU"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

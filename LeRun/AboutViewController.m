@@ -7,7 +7,9 @@
 //
 
 #import "AboutViewController.h"
-
+#import "RunLeWebViewController.h"
+#import "ErrorBackViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 @interface AboutViewController ()
 
 @end
@@ -16,13 +18,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:RGB(245, 245, 245)];
     // Do any additional setup after loading the view from its nib.
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"关于我们";
-    [FuncPublic hideTabBar:self];
+//    [FuncPublic hideTabBar:self];
     
+    self.versionLabe.text = [NSString stringWithFormat:@"当前版本号:%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    
+    UITapGestureRecognizer *tap1 = [UITapGestureRecognizer new];
+    [self.updateView addGestureRecognizer:tap1];
+    [[tap1 rac_gestureSignal] subscribeNext:^(id x) {//点击检查更新。
+        [self updateAction];
+    }];
+    
+    UITapGestureRecognizer *tap2 = [UITapGestureRecognizer new];
+    [self.errorBackView addGestureRecognizer:tap2];
+    [[tap2 rac_gestureSignal] subscribeNext:^(id x) {//反馈
+        ErrorBackViewController *errorBVC = [ErrorBackViewController new];
+        [self.navigationController pushViewController:errorBVC animated:YES];
+    }];
+}
+//官网。
+- (IBAction)webSites:(id)sender {
+    RunLeWebViewController *webVC = [RunLeWebViewController new];
+    webVC.urlStr = @"http://jxkuafu.com";
+    webVC.title = @"官网";
+    [self.navigationController pushViewController:webVC animated:YES];
+}
+//合作伙伴
+- (IBAction)togetherBtn:(id)sender {
     
 }
-
+-(void)updateAction{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms://itunes.apple.com/gb/app/yi-dong-cai-bian/id391945719?mt=8"]];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

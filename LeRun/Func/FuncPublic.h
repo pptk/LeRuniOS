@@ -70,6 +70,8 @@ _Pragma("clang diagnostic pop")
 
 //#define RGB(r,g,b,a) [UIColor colorWithRed:r/255%255.0 green:g/255%255.0 blue:b/255%255.0 alpha:a]
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define LINECOLOR RGBCOLOR(205,205,205)
+
 
 #pragma mark - 设备版本
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
@@ -87,7 +89,7 @@ _Pragma("clang diagnostic pop")
 
 #define NAVBARCOLOR RGBCOLOR(12,181,245)
 
-#import "AFHTTPRequestOperationManager.h"
+//#import "AFHTTPRequestOperationManager.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
 #import "Reachability.h"
@@ -96,6 +98,9 @@ _Pragma("clang diagnostic pop")
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "WToast.h"
+#import <ShareSDK/ShareSDK.h>
+//#import "AFNetworking.h"
+#import "AFHTTPRequestOperationManager.h"
 
 @protocol RequestDelegate <NSObject>
 
@@ -154,8 +159,9 @@ _Pragma("clang diagnostic pop")
 
 
 #pragma mark AFNetworking 网络
-+(void)requestPost:(NSDictionary *)requestParams requestDelegate:(id<RequestDelegate>)requestDelegate requestUrl:(NSString *)url target:(NSString *)target;//requestParams:请求参数 requestDelegate:实现RequestDelegate代理 requestUrl:请求地址 target:回调标识，用于回调处理返回结果
-+(AFHTTPRequestOperationManager *)getAFNetManager;
+//+(void)requestPost:(NSDictionary *)requestParams requestDelegate:(id<RequestDelegate>)requestDelegate requestUrl:(NSString *)url target:(NSString *)target;//requestParams:请求参数 requestDelegate:实现RequestDelegate代理 requestUrl:请求地址 target:回调标识，用于回调处理返回结果
++(AFHTTPRequestOperationManager *)getAFNetManager;//返回数据类型为data
++(AFHTTPRequestOperationManager *)getAFNetJSONManager;//返回数据类型JSON
 +(NSString *)checkNetwork:(NSString *)url;//判断网络类型
 +(void)cleanCache:(NSString *)alert delegate:(id)delegate tureButtonTitle:(NSString *)tureButtonTitle cancelButtonTitles:(NSString *)cancelButtonTitles;//清除缓存
 
@@ -164,10 +170,14 @@ _Pragma("clang diagnostic pop")
 +(float)GetWidthFromString:(NSString *)text Font:(UIFont *)font Height:(float)height;//通过字符串和字体、高度计算最后宽度。
 +(float)GetHeightFromString:(NSString *)text Font:(UIFont *)font Width:(float)width;//根据字符串和字体、宽度计算最后高度。
 +(CGSize)checkSizeFromString:(NSString *)text Font:(UIFont *)font Width:(float)width Height:(float)height;//计算字符串尺寸
++(NSString *)TimerIntervalToString:(NSString *)time formatter:(NSString *)formatter;//时间转换格式。NSTime根据formatter转换
++ (NSString *)dateTimeDifferenceWithStartTime:(NSString *)startTime endTime:(NSString *)endTime;//两个时间差
 
 #pragma mark data
 +(void)SaveDefaultInfo:(id)str Key:(NSString *)key;
 +(id)GetDefaultInfo:(NSString *)key;
++(void)RemoveDefaultbyKey:(NSString *)key;
+
 
 +(NSString *)saveObjToFile:(id)obj fileName:(NSString *)name;//保存到文件夹
 +(NSString *)saveObjToFile:(id)obj fileName:(NSString *)name path:(NSString *)path;//保存到指定位置文件夹
@@ -177,6 +187,22 @@ _Pragma("clang diagnostic pop")
 +(void)savePwd:(NSString *)key data:(id)data;//保存密码
 +(id)getPwd:(NSString *)key;//获取
 +(void)deletePwd:(NSString *)key;//删除
+
+
++(void)showTabBar:(UIViewController *)vc;//显示Tabbar
++(void)hideTabBar:(UIViewController *)vc;//隐藏tabBar
++(NSString *)randString:(NSInteger)length;//随机一个数字字母混合
++(BOOL)isValidateEmail:(NSString *)email;//是否是邮箱
++(BOOL)isMobileNumber:(NSString *)mobileNum;//是否是电话号码
+/* 目前只支持中国电信，中国移动，中国联通 */
+
++(NSString*)DataTojsonString:(id)object;
+
++(UIViewController *)parentViewController:(UIView *)parentView;
+
++(void)shareWithShareMenuOnly:(UIViewController *)vc haveReport:(BOOL)tip;
++(void)customizePlatformShareContent:(id<ISSContent>)publishContent;
+
 @end
 
 

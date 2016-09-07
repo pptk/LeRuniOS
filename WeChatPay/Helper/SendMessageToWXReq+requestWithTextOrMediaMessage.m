@@ -14,7 +14,7 @@
                          OrMediaMessage:(WXMediaMessage *)message
                                   bText:(BOOL)bText
                                 InScene:(enum WXScene)scene {
-    SendMessageToWXReq *req = [[[SendMessageToWXReq alloc] init] autorelease];
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
     req.bText = bText;
     req.scene = scene;
     if (bText)

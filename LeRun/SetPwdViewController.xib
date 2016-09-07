@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SetPwdViewController">
             <connections>
+                <outlet property="changePwd" destination="nyI-yT-nYN" id="d7C-TA-XCT"/>
+                <outlet property="pwdFirstTextField" destination="hbg-0R-hCH" id="y12-1S-jxS"/>
+                <outlet property="pwdSecondTextField" destination="q7k-3I-kMx" id="Ban-sf-lUe"/>
+                <outlet property="telLabel" destination="HVW-uZ-Z5Q" id="bNa-ct-IfJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +18,81 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您注册的手机号为:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDW-fC-Iuz">
+                    <rect key="frame" x="30" y="110" width="124.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请设置您的密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTd-fK-kZa">
+                    <rect key="frame" x="30" y="138" width="98" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18146612589" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVW-uZ-Z5Q">
+                    <rect key="frame" x="161" y="110" width="94.5" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请重新输入您的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q7k-3I-kMx">
+                    <rect key="frame" x="30" y="260" width="540" height="45"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="r30-Y8-tYJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyI-yT-nYN">
+                    <rect key="frame" x="30" y="345" width="540" height="45"/>
+                    <color key="backgroundColor" red="0.047058823529411764" green="0.70980392156862748" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="jOm-zk-ooC"/>
+                    </constraints>
+                    <state key="normal" title="修改密码">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changePwd:" destination="-1" eventType="touchUpInside" id="OPO-CL-64X"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hbg-0R-hCH">
+                    <rect key="frame" x="30" y="195" width="540" height="45"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="dVY-cb-NeC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wrong.png" translatesAutoresizingMaskIntoConstraints="NO" id="XuO-jp-5fn">
+                    <rect key="frame" x="485" y="208" width="20" height="20"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="nyI-yT-nYN" firstAttribute="top" secondItem="q7k-3I-kMx" secondAttribute="bottom" constant="40" id="5vP-yB-knY"/>
+                <constraint firstItem="nyI-yT-nYN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="C7g-cz-Cd3"/>
+                <constraint firstAttribute="trailing" secondItem="q7k-3I-kMx" secondAttribute="trailing" constant="30" id="KOk-SB-0oW"/>
+                <constraint firstItem="DDW-fC-Iuz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Lqe-zr-qBn"/>
+                <constraint firstItem="DDW-fC-Iuz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="110" id="NTg-5T-cVd"/>
+                <constraint firstItem="HVW-uZ-Z5Q" firstAttribute="leading" secondItem="DDW-fC-Iuz" secondAttribute="trailing" constant="6.5" id="VE7-LI-uUf"/>
+                <constraint firstAttribute="trailing" secondItem="nyI-yT-nYN" secondAttribute="trailing" constant="30" id="W5h-QL-Gey"/>
+                <constraint firstItem="hbg-0R-hCH" firstAttribute="top" secondItem="dTd-fK-kZa" secondAttribute="bottom" constant="40" id="X93-NM-lV4"/>
+                <constraint firstItem="dTd-fK-kZa" firstAttribute="top" secondItem="DDW-fC-Iuz" secondAttribute="bottom" constant="10" id="XkJ-Hb-G9Z"/>
+                <constraint firstAttribute="trailing" secondItem="hbg-0R-hCH" secondAttribute="trailing" constant="30" id="YaS-Q1-9g5"/>
+                <constraint firstItem="hbg-0R-hCH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="cDb-rl-tQT"/>
+                <constraint firstItem="HVW-uZ-Z5Q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="110" id="fxt-0g-NAn"/>
+                <constraint firstItem="q7k-3I-kMx" firstAttribute="top" secondItem="hbg-0R-hCH" secondAttribute="bottom" constant="20" id="iNu-9N-61D"/>
+                <constraint firstItem="q7k-3I-kMx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="qpY-Zk-3Cf"/>
+                <constraint firstItem="dTd-fK-kZa" firstAttribute="leading" secondItem="DDW-fC-Iuz" secondAttribute="leading" id="zd4-hK-d9H"/>
+            </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="wrong.png" width="445" height="445"/>
+    </resources>
 </document>

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PriceTableViewCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+@property (strong, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UIButton *selectedState;
 
 @end

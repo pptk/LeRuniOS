@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XBScrollPageController.h"
+//@protocol DelegateTheme<NSObject>
+//-(void)hideTabBar;
+//@end
 
-@interface ThemeViewController : UIViewController
+@interface ThemeViewController : XBScrollPageController
+
+//@property(nonatomic,retain)id<DelegateTheme> delegate;
 
 @end
