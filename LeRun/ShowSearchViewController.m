@@ -29,7 +29,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleDefault];
-    
     [self.searchBar setBackgroundImage:[UIImage new]];
     self.searchBar.showsCancelButton = YES;
     [self.searchBar becomeFirstResponder];
@@ -244,11 +243,13 @@
             [self searchBlock:self.searchBar];
         }
     }else{
-        ShowDetailViewController *sdVC = [[ShowDetailViewController alloc]init];
-        sdVC.model = searchResultArray[indexPath.row];
+        ShowDetailViewController *sdVC = [[ShowDetailViewController alloc]initWithModel:searchResultArray[indexPath.row]];
         sdVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:sdVC animated:NO];
     }
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 //点赞事件
 -(void)loveAction:(ShowTableViewCell *)cell showModel:(ShowModel *)model{

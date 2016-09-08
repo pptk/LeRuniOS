@@ -38,13 +38,13 @@
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
     manager.enable = NO;
 }
--(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-//    [FuncPublic hideTabBar:self];
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.view.frame = CGRectMake(0, 64, DEVW, DEVH-64);
-    [self.view bringSubviewToFront:self.bottomView];
+-(instancetype)initWithModel:(ShowModel *)showModel{
+    if(self = [super init]){
+        self.model = showModel;
+    }
     return self;
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
 }
 - (void)viewDidLoad {
@@ -162,6 +162,7 @@
 #pragma mark getdata
 -(void)getData:(BOOL)show{
     //根据秀的ID查找点赞和评论列表
+    NSLog(@"%@",self.model);
     NSMutableArray *tempArray = [NSMutableArray array];
     NSMutableArray *tempArraylove = [NSMutableArray array];
     NSMutableDictionary *paramsComment = [NSMutableDictionary dictionary];

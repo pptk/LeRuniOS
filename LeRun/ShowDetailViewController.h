@@ -18,5 +18,5 @@
 @property (strong, nonatomic) IBOutlet UIView *bottomView;
 
 -(void)commonShare:(id)sender;
-
+-(instancetype)initWithModel:(ShowModel *)showModel;
 @end

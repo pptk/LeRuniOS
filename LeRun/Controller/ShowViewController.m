@@ -270,8 +270,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ShowDetailViewController *sdVC = [[ShowDetailViewController alloc]init];
-    sdVC.model = ShowArray[indexPath.row];
+    ShowDetailViewController *sdVC = [[ShowDetailViewController alloc]initWithModel:ShowArray[indexPath.row]];
     sdVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:sdVC animated:YES];
 }

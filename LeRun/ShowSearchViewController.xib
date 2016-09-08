@@ -32,7 +32,9 @@
                 <constraint firstItem="OEc-WD-7bn" firstAttribute="top" secondItem="7uW-ct-B2r" secondAttribute="bottom" id="Sp0-Ew-DD7"/>
                 <constraint firstItem="7uW-ct-B2r" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="WeX-o1-jgh"/>
                 <constraint firstAttribute="trailing" secondItem="7uW-ct-B2r" secondAttribute="trailing" id="Xb4-a0-FdY"/>
-                <constraint firstAttribute="bottom" secondItem="OEc-WD-7bn" secondAttribute="bottom" id="kdp-y8-Hcr"/>
+                <constraint firstAttribute="bottom" secondItem="OEc-WD-7bn" secondAttribute="bottom" id="kdp-y8-Hcr">
+                    <variation key="heightClass=regular-widthClass=compact" constant="44"/>
+                </constraint>
                 <constraint firstItem="7uW-ct-B2r" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="pWh-wn-sTr">
                     <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                 </constraint>
